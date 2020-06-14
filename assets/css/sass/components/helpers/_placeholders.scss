@@ -1,0 +1,48 @@
+@import "./mixins";
+
+// clearfix
+%clearfix {
+  zoom: 1;
+  &:after,
+  &:before {
+    display: table;
+    content: " ";
+    clear: both;
+  }
+}
+
+// aspect ratio placeholder
+%aspect-ratio-1-1 {
+  @include aspect-ratio(1, 1);
+}
+%aspect-ratio-16-9 {
+  @include aspect-ratio(16, 9);
+}
+%aspect-ratio-4-3 {
+  @include aspect-ratio(4, 3);
+}
+%aspect-ratio-3-2 {
+  @include aspect-ratio(3, 2);
+}
+%aspect-ratio-8-5 {
+  @include aspect-ratio(8, 5);
+}
+
+// reset text
+%reset-text {
+  font-family: sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: normal;
+  line-break: auto;
+  line-height: 1.5;
+  text-align: left;
+  text-align: start;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  white-space: normal;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
+}

@@ -1,0 +1,87 @@
+.clearfix {
+  zoom: 1;
+}
+.clearfix:after, .clearfix:before {
+  display: table;
+  content: " ";
+  clear: both;
+}
+
+caption,
+.txt-secondary, h2, h1 {
+  font-weight: 300;
+}
+
+body,
+.txt-paragraph, h5, h4, h3 {
+  font-weight: 400;
+}
+
+button,
+.txt-list,
+.txt-tab, h6,
+.txt-titles {
+  font-weight: 500;
+}
+
+h1 {
+  font-size: 96px;
+}
+
+h2 {
+  font-size: 60px;
+}
+
+h3 {
+  font-size: 48px;
+}
+
+h4 {
+  font-size: 34px;
+}
+
+h5 {
+  font-size: 24px;
+}
+
+h6,
+.txt-titles {
+  font-size: 20px;
+}
+
+body,
+.txt-paragraph {
+  font-size: 16px;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+}
+
+caption,
+.txt-secondary {
+  font-size: 12px;
+}
+
+button,
+.txt-list,
+.txt-tab {
+  font-size: 14px;
+}
+
+input {
+  font-size: 16px;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.example {
+  content: "test";
+}
+
+/*# sourceMappingURL=style.css.map */

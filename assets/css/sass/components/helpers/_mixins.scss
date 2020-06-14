@@ -1,0 +1,206 @@
+// square box
+@mixin square($size, $radius: 0) {
+  width: $size;
+  height: $size;
+
+  @if $radius != 0 {
+    border-radius: $radius;
+  }
+}
+
+// center
+@mixin center($options: absolute) {
+  @if $options == flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  } @else {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+// box model mixin
+$sides: (
+  1: top,
+  2: right,
+  3: bottom,
+  4: left,
+);
+// callback
+@mixin input4($numbers, $part, $sides) {
+  @for $i from 1 through length($numbers) {
+    $number: nth($numbers, $i);
+    @if $number != nope {
+      #{$part}-#{map.get($sides,$i)}: $number;
+    }
+  }
+}
+// callback part
+@mixin parts($part, $numbers) {
+  @each $item in $numbers {
+    @if $item != nope {
+      $check: valid-css-unit($item);
+      @if $check == false {
+        @error "You entered the wrong css unit in the parameter";
+      }
+    }
+  }
+
+  $length: length($numbers);
+  @if $length == 0 {
+    @error "\"size\" of measurement cannot be empty";
+  } @else if $length == 1 {
+    #{$part}: $numbers;
+  } @else if $length == 2 {
+    @for $i from 1 through length($numbers) {
+      $number: nth($numbers, $i);
+      @if $number != nope {
+        @if $i % 2 == 1 {
+          @each $order, $item in $sides {
+            @if $order % 2 == 1 {
+              #{$part}-#{$item}: $number;
+            }
+          }
+        } @else if $i % 2 == 0 {
+          @each $order, $item in $sides {
+            @if $order % 2 == 0 {
+              #{$part}-#{$item}: $number;
+            }
+          }
+        }
+      }
+    }
+  } @else if $length == 3 {
+    $list: append($numbers, nth($numbers, 2));
+    @include input4($list, $part, $sides);
+  } @else if $length == 4 {
+    @include input4($numbers, $part, $sides);
+  } @else if $length > 4 {
+    @error "Enter the correct amount of padding, no 3 or more than 4 input";
+  }
+}
+
+@mixin padding($numbers...) {
+  @include parts(padding, $numbers);
+}
+
+@mixin margin($numbers...) {
+  @include parts(margin, $numbers);
+}
+@mixin border($numbers...) {
+  @include parts(border, $numbers);
+}
+// end of box model
+
+// part responsive
+@mixin part-responsive($part, $side, $min, $max) {
+  $direction: top, right, bottom, left, vertical, horizontal, all;
+  $side: to-lower-case($side);
+  @if index($direction, $side) == null {
+    @error "error nih gan";
+  }
+  $res: responsive-unit($min, $max);
+
+  @if $side == all {
+    #{$part}: $min;
+    @include respond-to(md) {
+      #{$part}: $res;
+    }
+    @include respond-to(xl) {
+      #{$part}: $max;
+    }
+  } @else if $side == vertical {
+    #{$part}-top: $min;
+    #{$part}-bottom: $min;
+    @include respond-to(md) {
+      #{$part}-top: $res;
+      #{$part}-bottom: $res;
+    }
+    @include respond-to(xl) {
+      #{$part}-top: $max;
+      #{$part}-bottom: $max;
+    }
+  } @else if $side == horizontal {
+    #{$part}-right: $min;
+    #{$part}-left: $min;
+    @include respond-to(md) {
+      #{$part}-right: $res;
+      #{$part}-left: $res;
+    }
+    @include respond-to(xl) {
+      #{$part}-right: $max;
+      #{$part}-left: $max;
+    }
+  } @else {
+    #{$part}-#{$side}: $min;
+    @include respond-to(md) {
+      #{$part}-#{$side}: $res;
+    }
+    @include respond-to(xl) {
+      #{$part}-#{$side}: $max;
+    }
+  }
+}
+
+@mixin padding-responsive($side, $min, $max) {
+  @include part-responsive(padding, $side, $min, $max);
+}
+@mixin margin-responsive($side, $min, $max) {
+  @include part-responsive(margin, $side, $min, $max);
+}
+@mixin border-width-responsive($side, $min, $max) {
+  @include part-responsive(border-width, $side, $min, $max);
+}
+
+// size
+@mixin size($width, $height: $width) {
+  @if valid-css-unit($width) {
+    @if valid-css-unit($height) {
+      width: $width;
+      height: $height;
+    } @else {
+      @error "error in input data height";
+    }
+  } @else {
+    @error "error in input data width";
+  }
+}
+
+// circle
+@mixin circle($size: 100px, $color: #000) {
+  @include size($size);
+  border-radius: 50%;
+  background-color: $color;
+}
+
+// aspect ratio
+@mixin aspect-ratio($x, $y) {
+  position: relative;
+  display: block;
+  height: 100;
+  padding: 0;
+  overflow: hidden;
+  padding-top: $y/$x * 100%;
+}
+
+// hover
+@mixin hover {
+  &:not([disabled]):hover {
+    @content;
+  }
+}
+
+// font responsive
+@mixin font-responsive($min, $max) {
+  font-size: $min;
+
+  @include respond-to(md) {
+    font-size: responsive-unit($min, $max);
+  }
+  @include respond-to(xl) {
+    font-size: $max;
+  }
+}

@@ -1,0 +1,30 @@
+/// Remove the unit of a length
+/// @param {Number} $number - Number to remove unit from
+/// @return {Number} - Unitless number
+@function strip-unit($number) {
+  @if type-of($number) == "number" and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+// check valid css unit
+@function valid-css-unit($size) {
+  $type: type-of($size);
+  $unit: "%" px rem em cm ex ch vw vh vmin vmax;
+  @if $type == number and index($unit, unit($size)) != null {
+    @return true;
+  } @else {
+    @return false;
+  }
+}
+
+// give a return value of responsive unit
+@function responsive-unit($min, $max) {
+  $dif: $max - $min;
+  $a: strip-unit($dif);
+  $b: map.get($breakpoints, md);
+  $c: strip-unit(map.get($breakpoints, xl) - $b);
+  @return calc(#{$min} + #{$a} * ((100vw - #{$b}) / #{$c}));
+}

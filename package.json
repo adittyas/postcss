@@ -1,0 +1,42 @@
+{
+  "name": "postCSS",
+  "version": "1.0.0",
+  "description": "for more documention:",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "autoprefixer": "^9.8.0",
+    "bowser": "^2.9.0",
+    "cssnano": "^4.1.10",
+    "lost": "^8.3.1",
+    "modernizr": "^3.11.2",
+    "postcss-assets": "^5.0.0",
+    "postcss-cli": "^7.1.1",
+    "postcss-color-rgba-fallback": "^4.0.0",
+    "postcss-font-magician": "^2.3.1",
+    "postcss-opacity": "^5.0.0",
+    "postcss-preset-env": "^6.7.0",
+    "postcss-pxtorem": "^5.1.1",
+    "stylelint": "^13.6.0",
+    "stylelint-config-standard": "^20.0.0",
+    "watchify": "^3.11.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:postcss": "postcss assets/css/style.css -o build/bundler.css -w",
+    "build:scss": "sass --watch assets/css/sass/style.scss:assets/css/style.css",
+    "build:css": "yarn run build:postcss && npm run build:scss",
+    "watchify": "watchify assets/bowser.js -o assets/bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adittyas/postcss.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adittyas/postcss/issues"
+  },
+  "homepage": "https://github.com/adittyas/postcss#readme"
+}

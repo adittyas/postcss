@@ -27,7 +27,7 @@
   padding-top: 110px;
 }
 .error-page__text.no-js {
-  background-image: url("../assets/img/mistake.svg");
+  background-image: url("../assets/img/javascript.svg");
 }
 .error-page__text.old-page {
   background-image: url("../assets/img/dinosaur.svg");
@@ -47,7 +47,7 @@
 }
 .error-page__text__title {
   font-weight: 300;
-  font-size: 32px;
+  font-size: 36px;
   margin-bottom: 12px;
 }
 .error-page__text__desc {

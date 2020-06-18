@@ -1,0 +1,20 @@
+// check valid css unit
+@function check-unit($size) {
+  $type: type-of($size);
+  $unit: "%" px pt rem em cm ex ch vw vh vmin vmax;
+  @if $type == number and index($unit, unit($size)) != null {
+    @return true;
+  } @else {
+    @return false;
+  }
+}
+
+// check all valid css unit in all list
+@function check-units($list) {
+  @each $item in $list {
+    @if check-unit($item) == false {
+      @return false;
+    }
+  }
+  @return true;
+}

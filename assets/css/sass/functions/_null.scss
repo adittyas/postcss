@@ -1,0 +1,21 @@
+// check is null
+@function check-null($item) {
+  @if $item != null {
+    @return false;
+  }
+  @return true;
+}
+
+// check is null in list
+@function check-nulls($list) {
+  $a: true;
+  @each $i in $list {
+    @if check-null($i) == false {
+      $a: append($a, false);
+    }
+  }
+  @if index($a, false) {
+    @return false;
+  }
+  @return true;
+}

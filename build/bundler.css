@@ -1,98 +1,71 @@
 @font-face {
-  font-family: Roboto;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh7USSwaPHw.woff) format("woff"),url(https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh7USSwaPHQ.eot?#) format("eot"),url(https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh7USSwiPGQ.woff2) format("woff2"),url(https://fonts.gstatic.com/l/font?kit=S6u9w4BMUTPHh7USSwaPHg&skey=91f32e07d083dd3a&v=v16#Lato) format("svg");
+}
+@font-face {
+  font-family: Lato;
   font-style: normal;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7GxM.woff) format("woff"),url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7GxO.eot?#) format("eot"),url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2");
-  unicode-range: SVG;
+  src: url(https://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjxAwWA.woff) format("woff"),url(https://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjxAwWg.eot?#) format("eot"),url(https://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjx4wXg.woff2) format("woff2"),url(https://fonts.gstatic.com/l/font?kit=S6uyw4BMUTPHjxAwWQ&skey=2d58b92a99e1c086&v=v16#Lato) format("svg");
 }
-.clearfix {
-  zoom: 1;
+.error-page {
+  font-family: "Lato", Arial, Helvetica, sans-serif;
+  background-color: #f9f9fa;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
-.clearfix:after, .clearfix:before {
-  display: table;
-  content: " ";
-  clear: both;
+.error-page .error-page__text.old-page, .error-page .error-page__text.no-js {
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: 6.25rem;
 }
-
-caption,
-.txt-secondary, h2, h1 {
+@media screen and (min-width: 600px) {
+  .error-page .error-page__text.old-page, .error-page .error-page__text.no-js {
+    background-position: left center;
+  }
+}
+.error-page__text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 80%;
+  height: 6.875rem;
+  padding-top: 6.875rem;
+}
+.error-page__text.no-js {
+  background-image: url("../assets/img/mistake.svg");
+}
+.error-page__text.old-page {
+  background-image: url("../assets/img/dinosaur.svg");
+}
+@media screen and (min-width: 600px) {
+  .error-page__text {
+    padding-top: 0;
+    padding-left: 6.875rem;
+    width: 60%;
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .error-page__text {
+    width: auto;
+  }
+}
+.error-page__text__title {
   font-weight: 300;
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
 }
-
-body,
-.txt-paragraph, h5, h4, h3 {
+.error-page__text__desc {
   font-weight: 400;
-}
-
-button,
-.txt-list,
-.txt-tab, h6,
-.txt-titles {
-  font-weight: 500;
-}
-
-h1 {
-  font-size: 6rem;
-}
-
-h2 {
-  font-size: 3.75rem;
-}
-
-h3 {
-  font-size: 3rem;
-}
-
-h4 {
-  font-size: 2.125rem;
-}
-
-h5 {
-  font-size: 1.5rem;
-}
-
-h6,
-.txt-titles {
-  font-size: 1.25rem;
-}
-
-body,
-.txt-paragraph {
-  font-size: 1rem;
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
-}
-
-caption,
-.txt-secondary {
-  font-size: 0.75rem;
-}
-
-button,
-.txt-list,
-.txt-tab {
-  font-size: 0.875rem;
-}
-
-input {
-  font-size: 1rem;
-}
-
-html {
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-*,
-*:before,
-*:after {
-  -webkit-box-sizing: inherit;
-     -moz-box-sizing: inherit;
-          box-sizing: inherit;
-}
-
-.example {
-  content: "test";
 }
 
 /*# sourceMappingURL=bundler.css.map */

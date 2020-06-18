@@ -1,10 +1,32 @@
 @use "sass:map";
 
-@import "./components/helpers/breakpoint";
-@import "./components/helpers/functions";
-@import "./components/helpers/mixins";
-@import "./components/helpers/placeholders";
-@import "./components/helpers/class";
+// the functions
+@import "./functions/fluid";
+@import "./functions/nth";
+@import "./functions/null";
+@import "./functions/unit";
 
-@import "./components/typography/materalize";
-@import "./code.scss";
+// the placeholders
+@import "./placeholders/reset_text";
+@import "./placeholders/clearfix";
+
+// the mixin
+@import "./mixins/box_sizing";
+@import "./mixins/breakpoints";
+@import "./mixins/center";
+@import "./mixins/circle";
+@import "./mixins/fluid";
+@import "./mixins/ratio";
+@import "./mixins/square";
+@import "./mixins/hover";
+
+// vendors
+// * select what you need
+@import "./vendors/bourbon/bourbon";
+// @import "./vendors/reset/css_reset";
+// @import "./vendors/reset/normalize";
+// @import "./vendors/reset/sanitize";
+
+// here your code
+@import "./code/magic";
+@import "./code/errorPage";

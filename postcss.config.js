@@ -7,6 +7,7 @@ module.exports = {
           "400": ["woff, eot, woff2", "svg"],
         },
         Lato: {
+          "300": ["woff, eot, woff2, svg"],
           "400": ["woff, eot, woff2, svg"],
         },
       },

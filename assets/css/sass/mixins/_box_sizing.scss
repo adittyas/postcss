@@ -1,0 +1,7 @@
+@mixin box-size {
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+}

@@ -1,0 +1,45 @@
+.error-page {
+  %fd {
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: 100px;
+    @include respond-to(md) {
+      background-position: left center;
+    }
+  }
+  font-family: "Lato", Arial, Helvetica, sans-serif;
+  background-color: #f9f9fa;
+  @include position(fixed, 0);
+  &__text {
+    &.no-js {
+      background-image: url("../assets/img/mistake.svg");
+
+      @extend %fd;
+    }
+    &.old-page {
+      background-image: url("../assets/img/dinosaur.svg");
+      @extend %fd;
+    }
+    @include center;
+    width: 80%;
+    height: 110px;
+    @include padding(110px null null null);
+    @include respond-to(md) {
+      @include padding(0 null null 110px);
+      width: 60%;
+      margin: 0 auto;
+    }
+    @include respond-to(xl) {
+      width: auto;
+    }
+
+    &__title {
+      font-weight: 300;
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+    &__desc {
+      font-weight: 400;
+    }
+  }
+}

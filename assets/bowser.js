@@ -1,7 +1,7 @@
 const Bowser = require("bowser");
-console.log(Bowser.parse(window.navigator.userAgent));
+// console.log(Bowser.parse(window.navigator.userAgent));
 const browser = Bowser.getParser(window.navigator.userAgent);
-console.log(browser.getBrowser());
+// console.log(browser.getBrowser());
 const isValidBrowser = browser.satisfies({
   // declare browsers per OS
   windows: {
@@ -26,14 +26,18 @@ const isValidBrowser = browser.satisfies({
   opera: "<=22",
   "microsoft edge": "<= 18",
 });
-// console.log(isValidBrowser);
-if (isValidBrowser) {
+console.log(isValidBrowser);
+if (!isValidBrowser) {
   const warn = `
-  <div class='errorPage'>
-    <div>
-        <img src='assets/img/error.svg'></img>
-        <div>Your browser is too old, please update your browser version first!</div>
-    </div
+  <div class='error-page'>
+    <div class="error-page__text old-page">
+      <div class="error-page__text__title">
+      Browser is to old
+      </div>
+      <div class="error-page__text__desc">
+      Please update your browser to use this site!<br />If you do not know how, please consult your nearest IT professional.
+      </div>
+    </div>
   </div>
   `;
   document.body.innerHTML = warn;

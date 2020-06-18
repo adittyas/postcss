@@ -1,0 +1,111 @@
+$sides: (
+  1: top,
+  2: right,
+  3: bottom,
+  4: left,
+);
+
+// part responsive
+@mixin part-responsive($args) {
+  $direction: top, right, bottom, left, vertical, horizontal, all;
+  $part: nth($args, 1);
+  $len: length(nth($args, 2));
+  $side: nth(nth($args, 2), 1);
+  $a: nth(nth($args, 2), 2);
+  $b: nth(nth($args, 2), 3);
+  $res: null;
+  @if $len > 3 {
+    @error "arguments must 3";
+  }
+  @if index($direction, $side) == null {
+    @error "input of side is invalid";
+  }
+  @if check-unit($a) == false or check-unit($b) == false {
+    @error "invalid input css unit";
+  }
+  @if $a > $b {
+    $res: reduce-unit($a, $b);
+  } @else if $a < $b {
+    $res: increase-unit($a, $b);
+  }
+
+  @if $side == all {
+    #{$part}: $a;
+    @include respond-to(md) {
+      #{$part}: $res;
+    }
+    @include respond-to(xl) {
+      #{$part}: $b;
+    }
+  } @else if $side == vertical {
+    #{$part}-top: $a;
+    #{$part}-bottom: $b;
+    @include respond-to(md) {
+      #{$part}-top: $res;
+      #{$part}-bottom: $res;
+    }
+    @include respond-to(xl) {
+      #{$part}-top: $b;
+      #{$part}-bottom: $b;
+    }
+  } @else if $side == horizontal {
+    #{$part}-right: $a;
+    #{$part}-left: $a;
+    @include respond-to(md) {
+      #{$part}-right: $res;
+      #{$part}-left: $res;
+    }
+    @include respond-to(xl) {
+      #{$part}-right: $b;
+      #{$part}-left: $b;
+    }
+  } @else {
+    #{$part}-#{$side}: $a;
+    @include respond-to(md) {
+      #{$part}-#{$side}: $res;
+    }
+    @include respond-to(xl) {
+      #{$part}-#{$side}: $b;
+    }
+  }
+}
+
+@mixin padding-fluid($arg) {
+  @include part-responsive(padding $arg);
+}
+@mixin margin-fluid($side, $min, $max) {
+  @include part-responsive(margin, $side, $min, $max);
+}
+@mixin border-width-fluid($side, $min, $max) {
+  @include part-responsive(border-width, $side, $min, $max);
+}
+
+// font reduce
+@mixin font-fluid($range) {
+  @if length($range) == 1 or length($range) > 2 {
+    @error "input just 1 or more than 2";
+  }
+  $a: nth($range, 1);
+  $b: nth($range, 2);
+  @if check-unit($a) == false or check-unit($b) == false {
+    @error "unit input not css unit";
+  }
+  @if $a < $b {
+    font-size: $a;
+    @include respond-to(md) {
+      font-size: increase-unit($a, $b);
+    }
+    @include respond-to(xl) {
+      font-size: $b;
+    }
+  } @else if $a > $b {
+    content: "bisa";
+    font-size: $a;
+    @include respond-to(md) {
+      font-size: reduce-unit($a, $b);
+    }
+    @include respond-to(xl) {
+      font-size: $b;
+    }
+  }
+}

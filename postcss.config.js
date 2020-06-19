@@ -6,7 +6,9 @@ module.exports = {
         Roboto: {
           "400": ["woff, eot, woff2", "svg"],
         },
-        Lato: {
+        Nunito: {
+          "100": ["woff, eot, woff2, svg"],
+          "200": ["woff, eot, woff2, svg"],
           "300": ["woff, eot, woff2, svg"],
           "400": ["woff, eot, woff2, svg"],
         },

@@ -28,7 +28,7 @@ const isValidBrowser = browser.satisfies({
   "microsoft edge": "<= 18",
 });
 console.log(isValidBrowser);
-if (!isValidBrowser) {
+if (isValidBrowser) {
   const warn = `
   <div class='error-page'>
     <div class="error-page__text old-page">

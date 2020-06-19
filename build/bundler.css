@@ -1,17 +1,23 @@
 @font-face {
-  font-family: Lato;
+  font-family: Nunito;
   font-style: normal;
-  font-weight: 300;
-  src: url(https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh7USSwaPHw.woff) format("woff"),url(https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh7USSwaPHQ.eot?#) format("eot"),url(https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh7USSwiPGQ.woff2) format("woff2"),url(https://fonts.gstatic.com/l/font?kit=S6u9w4BMUTPHh7USSwaPHg&skey=91f32e07d083dd3a&v=v16#Lato) format("svg");
+  font-weight: 200;
+  src: url(https://fonts.gstatic.com/s/nunito/v11/XRXW3I6Li01BKofA-seUb-vO.woff) format("woff"),url(https://fonts.gstatic.com/s/nunito/v11/XRXW3I6Li01BKofA-seUb-vM.eot?#) format("eot"),url(https://fonts.gstatic.com/s/nunito/v11/XRXW3I6Li01BKofA-seUYevI.woff2) format("woff2"),url(https://fonts.gstatic.com/l/font?kit=XRXW3I6Li01BKofA-seUb-vP&skey=8ad0032e0b847aa6&v=v11#Nunito) format("svg");
 }
 @font-face {
-  font-family: Lato;
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://fonts.gstatic.com/s/nunito/v11/XRXW3I6Li01BKofAnsSUb-vO.woff) format("woff"),url(https://fonts.gstatic.com/s/nunito/v11/XRXW3I6Li01BKofAnsSUb-vM.eot?#) format("eot"),url(https://fonts.gstatic.com/s/nunito/v11/XRXW3I6Li01BKofAnsSUYevI.woff2) format("woff2"),url(https://fonts.gstatic.com/l/font?kit=XRXW3I6Li01BKofAnsSUb-vP&skey=327ea4351017b269&v=v11#Nunito) format("svg");
+}
+@font-face {
+  font-family: Nunito;
   font-style: normal;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjxAwWA.woff) format("woff"),url(https://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjxAwWg.eot?#) format("eot"),url(https://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjx4wXg.woff2) format("woff2"),url(https://fonts.gstatic.com/l/font?kit=S6uyw4BMUTPHjxAwWQ&skey=2d58b92a99e1c086&v=v16#Lato) format("svg");
+  src: url(https://fonts.gstatic.com/s/nunito/v11/XRXV3I6Li01BKofIO-aH.woff) format("woff"),url(https://fonts.gstatic.com/s/nunito/v11/XRXV3I6Li01BKofIO-aF.eot?#) format("eot"),url(https://fonts.gstatic.com/s/nunito/v11/XRXV3I6Li01BKofINeaB.woff2) format("woff2"),url(https://fonts.gstatic.com/l/font?kit=XRXV3I6Li01BKofIO-aG&skey=27bb6aa8eea8a5e7&v=v11#Nunito) format("svg");
 }
 .error-page {
-  font-family: "Lato", Arial, Helvetica, sans-serif;
+  font-family: "Nunito", Arial, Helvetica, sans-serif;
   background-color: #f9f9fa;
   position: fixed;
   top: 0;
@@ -30,6 +36,7 @@
   }
 }
 .error-page__text {
+  text-align: justify;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -50,7 +57,7 @@
   .error-page__text {
     padding-top: 0;
     padding-left: 6.875rem;
-    width: 60%;
+    max-width: 29.3125rem;
     margin: 0 auto;
   }
 }
@@ -61,8 +68,18 @@
 }
 .error-page__text__title {
   font-weight: 300;
-  font-size: 2.25rem;
+  font-size: 1.75rem;
   margin-bottom: 0.75rem;
+}
+@media screen and (min-width: 600px) {
+  .error-page__text__title {
+    font-size: calc(1.75rem + 8 * ((100vw - 37.5rem) / 600));
+  }
+}
+@media screen and (min-width: 1200px) {
+  .error-page__text__title {
+    font-size: 2.25rem;
+  }
 }
 .error-page__text__desc {
   font-weight: 400;

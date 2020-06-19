@@ -7,10 +7,11 @@
       background-position: left center;
     }
   }
-  font-family: "Lato", Arial, Helvetica, sans-serif;
+  font-family: "Nunito", Arial, Helvetica, sans-serif;
   background-color: #f9f9fa;
   @include position(fixed, 0);
   &__text {
+    text-align: justify;
     &.no-js {
       background-image: url("../assets/img/javascript.svg");
 
@@ -26,7 +27,7 @@
     @include padding(110px null null null);
     @include respond-to(md) {
       @include padding(0 null null 110px);
-      width: 60%;
+      max-width: 469px;
       margin: 0 auto;
     }
     @include respond-to(xl) {
@@ -35,7 +36,7 @@
 
     &__title {
       font-weight: 300;
-      font-size: 36px;
+      @include font-fluid(28px 36px);
       margin-bottom: 12px;
     }
     &__desc {
